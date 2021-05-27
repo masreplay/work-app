@@ -1,19 +1,16 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:work_app/data/sharedpref/constants/preferences.dart';
-import 'package:work_app/ui/home/character_list_item.dart';
-import 'package:work_app/models/mywork/list_my_work.dart';
-import 'package:work_app/stores/work/work_store.dart';
-import 'package:work_app/utils/routes/routes.dart';
-import 'package:work_app/stores/language/language_store.dart';
-import 'package:work_app/stores/theme/theme_store.dart';
-import 'package:work_app/utils/locale/app_localization.dart';
-import 'package:work_app/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:material_dialog/material_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:work_app/models/mywork/list_my_work.dart';
+import 'package:work_app/stores/language/language_store.dart';
+import 'package:work_app/stores/theme/theme_store.dart';
+import 'package:work_app/stores/work/work_store.dart';
+import 'package:work_app/ui/home/character_list_item.dart';
+import 'package:work_app/utils/locale/app_localization.dart';
+import 'package:work_app/utils/routes/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -29,13 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   static const _pageSize = 10;
 
   final PagingController<int, Work> _pagingController =
-  PagingController(firstPageKey: 0);
+      PagingController(firstPageKey: 0);
 
   Future<void> _fetchPage(int pageKey) async {
     try {
       await _store.getWorks(pageKey);
-      final newItems =  _store.workList!;
+      final newItems = _store.workList;
       final isLastPage = newItems.length < _pageSize;
+
       if (isLastPage) {
         _pagingController.appendLastPage(newItems);
       } else {
@@ -44,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     } catch (error) {
       _pagingController.error = error;
+      print("error");
+      print(error);
     }
   }
 
@@ -64,10 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _themeStore = Provider.of<ThemeStore>(context);
     _store = Provider.of<WorkStore>(context);
 
-    // check to see if already called api
-    if (!_store.loading) {
-      _store.getWorks(0);
-    }
   }
 
   @override
@@ -114,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onPressed: () async {
          await _store.logout();
         Navigator.of(context).pushReplacementNamed(Routes.login);
+
       },
       icon: Icon(
         Icons.power_settings_new,
@@ -141,62 +138,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-  Widget get _buildMainPaging=>PagedListView<int, Work>(
-    pagingController: _pagingController,
-    builderDelegate: PagedChildBuilderDelegate<Work>(
-      itemBuilder: (context, item, index) => WorkListItem(
-        work: item,
-      ),
-    ),
-  );
 
-  Widget _buildMainContent() {
-    return Observer(
-      builder: (context) {
-        return _store.loading
-            ? CustomProgressIndicatorWidget()
-            : Material(child: _buildListView());
-      },
-    );
-  }
-
-  Widget _buildListView() {
-    return _store.workList != null
-        ? ListView.separated(
-            itemCount: _store.workList!.length,
-            separatorBuilder: (context, position) {
-              return Divider();
-            },
-            itemBuilder: (context, position) {
-              return _buildListItem(position);
-            },
-          )
-        : Center(
-            child: Text(
-              AppLocalizations.of(context).translate('home_tv_no_post_found'),
+  Widget get _buildMainPaging => RefreshIndicator(
+        onRefresh: () => Future.sync(
+          () => _pagingController.refresh(),
+        ),
+        child: PagedListView<int, Work>(
+          pagingController: _pagingController,
+          builderDelegate: PagedChildBuilderDelegate<Work>(
+            itemBuilder: (context, item, index) => WorkListItem(
+              work: item,
             ),
-          );
-  }
-
-  Widget _buildListItem(int position) {
-    return ListTile(
-      dense: true,
-      leading: Icon(Icons.cloud_circle),
-      title: Text(
-        '${_store.workList?[position].employee}',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        softWrap: false,
-        style: Theme.of(context).textTheme.title,
-      ),
-      subtitle: Text(
-        '${_store.workList?[position].employee}',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        softWrap: false,
-      ),
-    );
-  }
+          ),
+        ),
+      );
 
   Widget _handleErrorMessage() {
     return Observer(
@@ -212,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // General Methods:-----------------------------------------------------------
   _showErrorMessage(String message) {
-    Future.delayed(Duration(milliseconds: 0), () {
+    Future.delayed(Duration.zero, () {
       if (message.isNotEmpty) {
         FlushbarHelper.createError(
           message: message,
@@ -285,59 +240,3 @@ _buildLanguageDialog() {
     super.dispose();
   }
 }
-
-
-// class CharacterListView extends StatefulWidget {
-//   @override
-//   _CharacterListViewState createState() => _CharacterListViewState();
-// }
-//
-// class _CharacterListViewState extends State<CharacterListView> {
-//   static const _pageSize = 20;
-//
-//   final PagingController<int, CharacterSummary> _pagingController =
-//   PagingController(firstPageKey: 0);
-//
-//   @override
-//   void initState() {
-//     _pagingController.addPageRequestListener((pageKey) {
-//       _fetchPage(pageKey);
-//     });
-//     super.initState();
-//   }
-//
-//   Future<void> _fetchPage(int pageKey) async {
-//     try {
-//       final newItems = await RemoteApi.getCharacterList(pageKey, _pageSize);
-//       final isLastPage = newItems.length < _pageSize;
-//       if (isLastPage) {
-//         _pagingController.appendLastPage(newItems);
-//       } else {
-//         final nextPageKey = pageKey + newItems.length;
-//         _pagingController.appendPage(newItems, nextPageKey);
-//       }
-//     } catch (error) {
-//       _pagingController.error = error;
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) =>
-//       // Don't worry about displaying progress or error indicators on screen; the
-//   // package takes care of that. If you want to customize them, use the
-//   // [PagedChildBuilderDelegate] properties.
-//   PagedListView<int, CharacterSummary>(
-//     pagingController: _pagingController,
-//     builderDelegate: PagedChildBuilderDelegate<CharacterSummary>(
-//       itemBuilder: (context, item, index) => CharacterListItem(
-//         character: item,
-//       ),
-//     ),
-//   );
-//
-//   @override
-//   void dispose() {
-//     _pagingController.dispose();
-//     super.dispose();
-//   }
-// }

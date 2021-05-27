@@ -203,6 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onPressed: () async {
         if (_store.canLogin) {
           DeviceUtils.hideKeyboard(context);
+          /// to make it able to navigate back for the first time of navigation
           _store.login();
         } else {
           _showErrorMessage('Please fill in all fields');

@@ -16,29 +16,30 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    startTimer();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return Material(
-      child: Center(child: AppIconWidget(image: Assets.appLogo)),
-    );
+    return Scaffold(
+        body: Container(
+          decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromARGB(255, 25,178,238),
+                  Color.fromARGB(255, 21,236,229)
+                ],
+              )),
+          child: Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                "images/app_logo.png",
+                width: 128,
+                height: 128,
+              )),
+        ),
+      );
   }
 
-  startTimer() {
-    var _duration = Duration(milliseconds: 2000);
-    return Timer(_duration, navigate);
-  }
-
-  navigate() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-
-    if (preferences.getBool(Preferences.is_logged_in) ?? false) {
-      Navigator.of(context).pushReplacementNamed(Routes.home);
-    } else {
-      Navigator.of(context).pushReplacementNamed(Routes.login);
-    }
-  }
 }

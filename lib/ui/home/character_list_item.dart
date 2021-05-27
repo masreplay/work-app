@@ -29,7 +29,7 @@ class WorkListItem extends StatelessWidget {
                         radius: 20,
                         child: CachedNetworkImage(imageUrl: work.img ?? ""))),
                 SizedBox(width: 10),
-                Expanded(
+                /*Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -39,7 +39,7 @@ class WorkListItem extends StatelessWidget {
                             ? "شسي"
                             : work.employee!.elementAt(index).username),
                   ),
-                ),
+                ),*/
               ],
           ),
             ),

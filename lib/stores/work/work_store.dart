@@ -30,7 +30,7 @@ abstract class _WorkStore with Store {
       ObservableFuture<ListMyWork?>(emptyPostResponse);
 
   @observable
-  List<Work>? workList;
+  List<Work> workList = ObservableList<Work>();
 
   // get user form pref
   @observable
@@ -46,9 +46,8 @@ abstract class _WorkStore with Store {
   @action
   Future getWorks(int skip) async {
     final future = _repository.getWorks(skip: skip);
-    fetchWorksFuture = ObservableFuture(future);
 
-    future.then((workList) {
+    await future.then((workList) {
       this.workList = workList.items.first.works;
     });
   }

@@ -4,6 +4,7 @@ import 'package:work_app/data/repository.dart';
 import 'package:work_app/di/components/injection.dart';
 import 'package:work_app/stores/form/form_store.dart';
 import 'package:work_app/stores/work/work_store.dart';
+import 'package:work_app/ui/splash/splash.dart';
 import 'package:work_app/utils/routes/routes.dart';
 import 'package:work_app/stores/language/language_store.dart';
 import 'package:work_app/stores/theme/theme_store.dart';
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
             theme: _themeStore.darkMode ? themeDataDark : themeData,
             routes: Routes.routes,
             locale: Locale(_languageStore.locale),
+            darkTheme: themeData,
+
             supportedLocales: _languageStore.supportedLanguages
                 .map((language) => Locale(language.locale!, language.code))
                 .toList(),
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
               // Built-in localization of basic text for Cupertino widgets
               GlobalCupertinoLocalizations.delegate,
             ],
-            home: _userStore.isLoggedIn ? HomeScreen() : LoginScreen(),
+            home: _userStore.isLoggedIn ? SplashScreen() : HomeScreen(),
           );
         },
       ),
