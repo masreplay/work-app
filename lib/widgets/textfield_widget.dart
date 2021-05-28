@@ -17,33 +17,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool autoFocus;
   final TextInputAction? inputAction;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: padding,
-      child: TextFormField(
-        controller: textController,
-        focusNode: focusNode,
-        onFieldSubmitted: onFieldSubmitted,
-        onChanged: onChanged,
-        autofocus: autoFocus,
-        textInputAction: inputAction,
-        obscureText: this.isObscure,
-        maxLength: 25,
-        keyboardType: this.inputType,
-        style: Theme.of(context).textTheme.body1,
-        decoration: InputDecoration(
-            hintText: this.hint,
-            hintStyle:
-                Theme.of(context).textTheme.body1!.copyWith(color: hintColor),
-            errorText: errorText,
-            counterText: '',
-            icon: this.isIcon ? Icon(this.icon, color: iconColor) : null),
-      ),
-    );
-  }
-
-  const TextFieldWidget({
+   TextFieldWidget({
     Key? key,
     required this.icon,
     required this.errorText,
@@ -53,13 +27,52 @@ class TextFieldWidget extends StatelessWidget {
     this.isObscure = false,
     this.isIcon = true,
     this.padding = const EdgeInsets.all(0),
-    this.hintColor = Colors.grey,
-    this.iconColor = Colors.grey,
+    this.hintColor = const Color(0xBFFFFFFF),
+    this.iconColor = Colors.white,
     this.focusNode,
     this.onFieldSubmitted,
     this.onChanged,
     this.autoFocus = false,
     this.inputAction,
   }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: TextFormField(
+        controller: textController,
+        focusNode: focusNode,
+        onFieldSubmitted: onFieldSubmitted,
+        onChanged: onChanged,
+        cursorColor: Colors.white,
+        autofocus: autoFocus,
+        textInputAction: inputAction,
+        obscureText: this.isObscure,
+        maxLength: 25,
+        keyboardType: this.inputType,
+        style: Theme.of(context)
+            .textTheme
+            .bodyText1
+            ?.copyWith(color: Colors.white),
+        decoration: InputDecoration(
+            hintText: this.hint,
+
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            suffixIcon: this.isIcon ? Icon(this.icon, color: iconColor) : null,
+            hintStyle: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: hintColor),
+            errorText: errorText,
+            counterText: ''),
+      ),
+    );
+  }
 
 }

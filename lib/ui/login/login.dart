@@ -1,20 +1,16 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:work_app/constants/assets.dart';
-import 'package:work_app/data/sharedpref/constants/preferences.dart';
-import 'package:work_app/utils/routes/routes.dart';
-import 'package:work_app/stores/form/form_store.dart';
-import 'package:work_app/stores/theme/theme_store.dart';
-import 'package:work_app/utils/device/device_utils.dart';
-import 'package:work_app/utils/locale/app_localization.dart';
-import 'package:work_app/widgets/app_icon_widget.dart';
-import 'package:work_app/widgets/empty_app_bar_widget.dart';
-import 'package:work_app/widgets/progress_indicator_widget.dart';
-import 'package:work_app/widgets/rounded_button_widget.dart';
-import 'package:work_app/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:work_app/data/sharedpref/constants/preferences.dart';
+import 'package:work_app/stores/form/form_store.dart';
+import 'package:work_app/stores/theme/theme_store.dart';
+import 'package:work_app/ui/splash/splash.dart';
+import 'package:work_app/utils/locale/app_localization.dart';
+import 'package:work_app/utils/routes/routes.dart';
+import 'package:work_app/widgets/progress_indicator_widget.dart';
+import 'package:work_app/widgets/textfield_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -59,76 +55,69 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      primary: true,
-      appBar: EmptyAppBar(),
-      body: _buildBody(),
-    );
-  }
-
-  // body methods:--------------------------------------------------------------
-  Widget _buildBody() {
-    return Material(
-      child: Stack(
-        children: <Widget>[
-          MediaQuery.of(context).orientation == Orientation.landscape
-              ? Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: _buildLeftSide(),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: _buildRightSide(),
-                    ),
-                  ],
-                )
-              : Center(child: _buildRightSide()),
-          Observer(
-            builder: (context) {
-              return _store.success
-                  ? navigate(context)
-                  : _showErrorMessage(_store.errorStore.errorMessage);
-            },
-          ),
-          Observer(
-            builder: (context) {
-              return Visibility(
-                visible: _store.loading,
-                child: CustomProgressIndicatorWidget(),
-              );
-            },
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLeftSide() {
-    return SizedBox.expand(
-      child: Image.asset(
-        Assets.carBackground,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
-  Widget _buildRightSide() {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            AppIconWidget(image: 'assets/icons/ic_appicon.png'),
-            SizedBox(height: 24.0),
-            _buildUserIdField(),
-            _buildPasswordField(),
-            _buildForgotPasswordButton(),
-            _buildSignInButton()
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF03B99B),
+            Color(0xFF346BB6),
           ],
+        )),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Observer(
+                builder: (context) {
+                  return _store.success
+                      ? navigate(context)
+                      : _showErrorMessage(_store.errorStore.errorMessage);
+                },
+              ),
+              Observer(
+                builder: (context) {
+                  return Visibility(
+                    visible: _store.loading,
+                    child: CustomProgressIndicatorWidget(),
+                  );
+                },
+              ),
+              Container(
+                  margin: EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                      color: Color(0x26FFFFFF),
+                      borderRadius: BorderRadius.all(Radius.circular(30))),
+                  padding: EdgeInsets.all(30),
+                  child: Column(
+                    children: [
+
+                      _buildUserIdField(),
+                      SizedBox(height: 20),
+                      _buildPasswordField(),
+                      SizedBox(height: 20),
+                      Align(
+                          child: Text("Now! Quick login use your touch ID",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  ?.copyWith(color: Colors.white)),
+                          alignment: Alignment(-1, 2)),
+                      SizedBox(height: 50),
+                      ButtonTextWidget(
+                        borderRadius: 25,
+                        label: 'register',
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 64),
+                        onTap: () {
+                          _store.login();
+                        },
+                      )
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
@@ -138,10 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Observer(
       builder: (context) {
         return TextFieldWidget(
-          hint: AppLocalizations.of(context).translate('login_et_user_email'),
+          hint:"Enter your name",
           inputType: TextInputType.emailAddress,
-          icon: Icons.person,
-          iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
+          icon: Icons.person_add_outlined,
           textController: _userEmailController,
           inputAction: TextInputAction.next,
           autoFocus: false,
@@ -161,12 +149,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Observer(
       builder: (context) {
         return TextFieldWidget(
-          hint:
-              AppLocalizations.of(context).translate('login_et_user_password'),
+          hint:"Enter your Password",
           isObscure: true,
           padding: EdgeInsets.only(top: 16.0),
-          icon: Icons.lock,
-          iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
+          icon: Icons.lock_outline,
           textController: _passwordController,
           focusNode: _passwordFocusNode,
           errorText: _store.formErrorStore.password,
@@ -178,46 +164,12 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildForgotPasswordButton() {
-    return Align(
-      alignment: FractionalOffset.centerRight,
-      child: FlatButton(
-        padding: EdgeInsets.all(0.0),
-        child: Text(
-          AppLocalizations.of(context).translate('login_btn_forgot_password'),
-          style: Theme.of(context)
-              .textTheme
-              .caption
-              ?.copyWith(color: Colors.orangeAccent),
-        ),
-        onPressed: () {},
-      ),
-    );
-  }
-
-  Widget _buildSignInButton() {
-    return RoundedButtonWidget(
-      buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
-      buttonColor: Colors.orangeAccent,
-      textColor: Colors.white,
-      onPressed: () async {
-        if (_store.canLogin) {
-          DeviceUtils.hideKeyboard(context);
-          /// to make it able to navigate back for the first time of navigation
-          _store.login();
-        } else {
-          _showErrorMessage('Please fill in all fields');
-        }
-      },
-    );
-  }
-
   Widget navigate(BuildContext context) {
     SharedPreferences.getInstance().then((prefs) {
       prefs.setBool(Preferences.is_logged_in, true);
     });
 
-    Future.delayed(Duration(milliseconds: 0), () {
+    Future.delayed(Duration.zero, () {
       Navigator.of(context).pushNamedAndRemoveUntil(
           Routes.home, (Route<dynamic> route) => false);
     });
