@@ -1,0 +1,792 @@
+{
+  "request": {
+    "url": "https://mgm1.dishtele.com/api/v1/users/login",
+    "multipart": [
+      {
+        "username": "task",
+        "password": "task1234"
+      }
+    ]
+  },
+  "response": {
+    "items": [
+      {
+        "id": 616,
+        "full_name": "task test",
+        "username": "task",
+        "phone": "0770327384738",
+        "img": null,
+        "dep_id": 4,
+        "status": 0,
+        "salary": 0,
+        "manager_name": null,
+        "is_employee": 0,
+        "is_manager": false,
+        "created_at": "2021-05-26T17:19:01.000000Z",
+        "updated_at": "2021-05-26T17:19:01.000000Z",
+        "is_deleted": false,
+        "works": [
+          {
+            "id": 940,
+            "user_id": 446,
+            "repeater_id": 29,
+            "agent_id": 608,
+            "work_details": "تنزيل ماستر",
+            "time_in": "11:53:47",
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 2,
+            "created_date": "2021-05-26 06:53:57",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 940
+            },
+            "repeaters": {
+              "id": 29,
+              "name": "Binook",
+              "city": "Binook",
+              "lat": "33.390500",
+              "log": "44.407700",
+              "created_at": "2020-11-19T02:24:16.000000Z",
+              "updated_at": "2020-11-19T02:24:16.000000Z"
+            },
+            "users": {
+              "id": 608,
+              "full_name": "محمد القيسي",
+              "username": "@somer",
+              "phone": "٠٧٧٠١٨٩٦٩٣٠",
+              "img": null,
+              "dep_id": 5,
+              "status": 0,
+              "salary": 0,
+              "manager_name": null,
+              "is_employee": 0,
+              "is_manager": false,
+              "created_at": "2021-05-22T10:11:17.000000Z",
+              "updated_at": "2021-05-22T10:11:17.000000Z",
+              "is_deleted": false,
+              "agent": [
+                {
+                  "id": 509,
+                  "user_id": 608,
+                  "repeaters_id": 29,
+                  "ccr_id": null,
+                  "details": "dish 30 + 912 ( master )",
+                  "user_resalar": "@somer",
+                  "distance": "1.800",
+                  "number_users": 35,
+                  "link_ip_master": "10.22.30.2",
+                  "link_ip_slave": "10.22.30.3",
+                  "link_type": "912",
+                  "log": "44.392178",
+                  "lat": "33.401082",
+                  "back_up": "-",
+                  "join_date": "2021-5-22",
+                  "port": null,
+                  "is_fiber": "0",
+                  "to_company": "true",
+                  "created_at": "2021-05-22T10:11:17.000000Z",
+                  "updated_at": "2021-05-27T20:26:19.000000Z",
+                  "is_deleted": false,
+                  "repeaters": {
+                    "id": 29,
+                    "name": "Binook",
+                    "city": "Binook",
+                    "lat": "33.390500",
+                    "log": "44.407700",
+                    "created_at": "2020-11-19T02:24:16.000000Z",
+                    "updated_at": "2020-11-19T02:24:16.000000Z"
+                  }
+                }
+              ],
+              "department": {
+                "id": 5,
+                "name": "Agent"
+              }
+            },
+            "employee": [
+              {
+                "id": 376,
+                "full_name": "Baker Mahmmood",
+                "username": "g.n1",
+                "phone": "07834498299",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-25T12:57:59.000000Z",
+                "updated_at": "2021-01-25T12:57:59.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 302,
+                "full_name": "Ali Abd Saamed",
+                "username": "Ali96",
+                "phone": "07733847472",
+                "img": "uploads/XcgHyl09gpWDIGuTDWRxbXwkkbkSES4X7pYFJSMe.jpg",
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-11T04:18:12.000000Z",
+                "updated_at": "2021-04-22T10:31:27.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          },
+          {
+            "id": 530,
+            "user_id": 446,
+            "repeater_id": null,
+            "agent_id": null,
+            "work_details": "تنزيل مايكروويف بسماية - زعفرانية",
+            "time_in": null,
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 1,
+            "created_date": "2021-03-30 14:40:57",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 530
+            },
+            "repeaters": null,
+            "users": null,
+            "employee": [
+              {
+                "id": 330,
+                "full_name": "أنس احمد",
+                "username": "anasahmed19",
+                "phone": "07831160703",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-13T23:54:38.000000Z",
+                "updated_at": "2021-02-08T15:43:24.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 309,
+                "full_name": "Diaa Ali",
+                "username": "diaa",
+                "phone": "07834498293",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T04:04:34.000000Z",
+                "updated_at": "2021-01-12T04:04:34.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          },
+          {
+            "id": 524,
+            "user_id": 446,
+            "repeater_id": 55,
+            "agent_id": 267,
+            "work_details": "تحويل من الحسينية القديم للجديد",
+            "time_in": null,
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 1,
+            "created_date": "2021-03-29 10:07:37",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 524
+            },
+            "repeaters": {
+              "id": 55,
+              "name": "Al-hussainia 2",
+              "city": "Al-hussainia 2",
+              "lat": "44.413686",
+              "log": "33.554250",
+              "created_at": "2021-02-24T17:49:40.000000Z",
+              "updated_at": "2021-02-24T17:49:40.000000Z"
+            },
+            "users": {
+              "id": 267,
+              "full_name": "اكرم عكلة",
+              "username": "@sttk",
+              "phone": "07728306123",
+              "img": null,
+              "dep_id": 5,
+              "status": 0,
+              "salary": 0,
+              "manager_name": null,
+              "is_employee": 0,
+              "is_manager": false,
+              "created_at": "2020-12-23T00:35:33.000000Z",
+              "updated_at": "2020-12-23T00:35:33.000000Z",
+              "is_deleted": false,
+              "agent": [
+                {
+                  "id": 252,
+                  "user_id": 267,
+                  "repeaters_id": 27,
+                  "ccr_id": null,
+                  "details": null,
+                  "user_resalar": "@sttk",
+                  "distance": "2.5k",
+                  "number_users": 31,
+                  "link_ip_master": "10.48.3.2",
+                  "link_ip_slave": "10.48.3.3",
+                  "link_type": "UBNT",
+                  "log": "44.402350",
+                  "lat": "33.553326",
+                  "back_up": "-",
+                  "join_date": "2020",
+                  "port": null,
+                  "is_fiber": "0",
+                  "to_company": null,
+                  "created_at": "2020-12-23T00:35:33.000000Z",
+                  "updated_at": "2021-03-29T13:02:27.000000Z",
+                  "is_deleted": false,
+                  "repeaters": {
+                    "id": 27,
+                    "name": "Hussenya",
+                    "city": "Hussenya",
+                    "lat": "33.533300",
+                    "log": "44.393400",
+                    "created_at": "2020-11-19T01:43:16.000000Z",
+                    "updated_at": "2020-11-19T01:43:16.000000Z"
+                  }
+                }
+              ],
+              "department": {
+                "id": 5,
+                "name": "Agent"
+              }
+            },
+            "employee": [
+              {
+                "id": 309,
+                "full_name": "Diaa Ali",
+                "username": "diaa",
+                "phone": "07834498293",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T04:04:34.000000Z",
+                "updated_at": "2021-01-12T04:04:34.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 314,
+                "full_name": "Rami Ayad",
+                "username": "RamiAyad",
+                "phone": "07834498281",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 1,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T13:24:24.000000Z",
+                "updated_at": "2021-03-10T15:33:33.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 1,
+                  "name": "Marketing"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          },
+          {
+            "id": 488,
+            "user_id": 314,
+            "repeater_id": 30,
+            "agent_id": 419,
+            "work_details": "نصب سبلت لربيتر بسماية",
+            "time_in": null,
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 1,
+            "created_date": "2021-03-23 18:44:14",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 488
+            },
+            "repeaters": {
+              "id": 30,
+              "name": "Basmaya",
+              "city": "Basmaya",
+              "lat": "33.129000",
+              "log": "44.685000",
+              "created_at": "2020-11-19T02:26:11.000000Z",
+              "updated_at": "2020-11-19T02:26:11.000000Z"
+            },
+            "users": {
+              "id": 419,
+              "full_name": "-----",
+              "username": "test",
+              "phone": "-----",
+              "img": null,
+              "dep_id": 5,
+              "status": 0,
+              "salary": 0,
+              "manager_name": null,
+              "is_employee": 0,
+              "is_manager": false,
+              "created_at": "2021-02-04T15:03:29.000000Z",
+              "updated_at": "2021-02-04T15:59:49.000000Z",
+              "is_deleted": false,
+              "agent": [
+                {
+                  "id": 351,
+                  "user_id": 419,
+                  "repeaters_id": 52,
+                  "ccr_id": null,
+                  "details": "------",
+                  "user_resalar": "-----",
+                  "distance": "----",
+                  "number_users": 1,
+                  "link_ip_master": null,
+                  "link_ip_slave": null,
+                  "link_type": "Other",
+                  "log": "44.332342",
+                  "lat": "33.434234",
+                  "back_up": "-",
+                  "join_date": "-----",
+                  "port": null,
+                  "is_fiber": "0",
+                  "to_company": null,
+                  "created_at": "2021-02-04T15:03:29.000000Z",
+                  "updated_at": "2021-02-04T15:59:49.000000Z",
+                  "is_deleted": false,
+                  "repeaters": {
+                    "id": 52,
+                    "name": "-------",
+                    "city": "------",
+                    "lat": "33.343234",
+                    "log": "44.343234",
+                    "created_at": "2021-01-19T13:32:54.000000Z",
+                    "updated_at": "2021-01-20T11:53:36.000000Z"
+                  }
+                }
+              ],
+              "department": {
+                "id": 5,
+                "name": "Agent"
+              }
+            },
+            "employee": [
+              {
+                "id": 314,
+                "full_name": "Rami Ayad",
+                "username": "RamiAyad",
+                "phone": "07834498281",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 1,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T13:24:24.000000Z",
+                "updated_at": "2021-03-10T15:33:33.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 1,
+                  "name": "Marketing"
+                }
+              },
+              {
+                "id": 308,
+                "full_name": "Weaam Daood",
+                "username": "Weaam",
+                "phone": "07834498291",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 8,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T02:21:47.000000Z",
+                "updated_at": "2021-03-23T18:42:50.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 8,
+                  "name": "Power"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          },
+          {
+            "id": 485,
+            "user_id": 446,
+            "repeater_id": 53,
+            "agent_id": 427,
+            "work_details": "تبديل لنك",
+            "time_in": null,
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 1,
+            "created_date": "2021-03-22 16:59:14",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 485
+            },
+            "repeaters": {
+              "id": 53,
+              "name": "hai- aljehad",
+              "city": "hai- aljehad",
+              "lat": "44.293126",
+              "log": "33.273950",
+              "created_at": "2021-02-06T17:42:50.000000Z",
+              "updated_at": "2021-02-06T17:42:50.000000Z"
+            },
+            "users": {
+              "id": 427,
+              "full_name": "ياسر الجنابي",
+              "username": "@hartt",
+              "phone": "07803951157",
+              "img": null,
+              "dep_id": 5,
+              "status": 0,
+              "salary": 0,
+              "manager_name": null,
+              "is_employee": 0,
+              "is_manager": false,
+              "created_at": "2021-02-06T18:15:18.000000Z",
+              "updated_at": "2021-02-06T18:15:18.000000Z",
+              "is_deleted": false,
+              "agent": [
+                {
+                  "id": 358,
+                  "user_id": 427,
+                  "repeaters_id": 24,
+                  "ccr_id": null,
+                  "details": "dish 30 + dish 32 +912 ( master + slave ) to company",
+                  "user_resalar": "@hartt",
+                  "distance": "1.300",
+                  "number_users": 44,
+                  "link_ip_master": "10.46.25.2",
+                  "link_ip_slave": "10.46.25.3",
+                  "link_type": "C5c",
+                  "log": "44.279432",
+                  "lat": "33.271041",
+                  "back_up": "-",
+                  "join_date": "2020-9-10",
+                  "port": null,
+                  "is_fiber": "0",
+                  "to_company": "true",
+                  "created_at": "2021-02-06T18:15:18.000000Z",
+                  "updated_at": "2021-05-25T11:23:12.000000Z",
+                  "is_deleted": false,
+                  "repeaters": {
+                    "id": 24,
+                    "name": "Hai-Aljehad",
+                    "city": "Hai-Aljehad",
+                    "lat": "33.273900",
+                    "log": "44.293100",
+                    "created_at": "2020-11-19T01:38:10.000000Z",
+                    "updated_at": "2020-11-19T01:38:10.000000Z"
+                  }
+                }
+              ],
+              "department": {
+                "id": 5,
+                "name": "Agent"
+              }
+            },
+            "employee": [
+              {
+                "id": 314,
+                "full_name": "Rami Ayad",
+                "username": "RamiAyad",
+                "phone": "07834498281",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 1,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T13:24:24.000000Z",
+                "updated_at": "2021-03-10T15:33:33.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 1,
+                  "name": "Marketing"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          },
+          {
+            "id": 466,
+            "user_id": 287,
+            "repeater_id": 54,
+            "agent_id": 419,
+            "work_details": "توجيه لنك مصطفى مزهر ماستر ايشارة 62-51",
+            "time_in": null,
+            "time_out": null,
+            "details": null,
+            "img": null,
+            "status": 1,
+            "created_date": "2021-03-21 16:52:13",
+            "pivot": {
+              "user_id": 616,
+              "daily_work_id": 466
+            },
+            "repeaters": {
+              "id": 54,
+              "name": "Al-obaidy",
+              "city": "Al-obaidy",
+              "lat": "44.518536",
+              "log": "33.368931",
+              "created_at": "2021-02-24T17:48:23.000000Z",
+              "updated_at": "2021-02-24T17:48:23.000000Z"
+            },
+            "users": {
+              "id": 419,
+              "full_name": "-----",
+              "username": "test",
+              "phone": "-----",
+              "img": null,
+              "dep_id": 5,
+              "status": 0,
+              "salary": 0,
+              "manager_name": null,
+              "is_employee": 0,
+              "is_manager": false,
+              "created_at": "2021-02-04T15:03:29.000000Z",
+              "updated_at": "2021-02-04T15:59:49.000000Z",
+              "is_deleted": false,
+              "agent": [
+                {
+                  "id": 351,
+                  "user_id": 419,
+                  "repeaters_id": 52,
+                  "ccr_id": null,
+                  "details": "------",
+                  "user_resalar": "-----",
+                  "distance": "----",
+                  "number_users": 1,
+                  "link_ip_master": null,
+                  "link_ip_slave": null,
+                  "link_type": "Other",
+                  "log": "44.332342",
+                  "lat": "33.434234",
+                  "back_up": "-",
+                  "join_date": "-----",
+                  "port": null,
+                  "is_fiber": "0",
+                  "to_company": null,
+                  "created_at": "2021-02-04T15:03:29.000000Z",
+                  "updated_at": "2021-02-04T15:59:49.000000Z",
+                  "is_deleted": false,
+                  "repeaters": {
+                    "id": 52,
+                    "name": "-------",
+                    "city": "------",
+                    "lat": "33.343234",
+                    "log": "44.343234",
+                    "created_at": "2021-01-19T13:32:54.000000Z",
+                    "updated_at": "2021-01-20T11:53:36.000000Z"
+                  }
+                }
+              ],
+              "department": {
+                "id": 5,
+                "name": "Agent"
+              }
+            },
+            "employee": [
+              {
+                "id": 310,
+                "full_name": "aws abd alwahd",
+                "username": "aws",
+                "phone": "07834498288",
+                "img": "uploads/3SBKpclHg9Atkl8NtcZxjuy8OH6p0DYOr56LzZ9V.png",
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-01-12T04:06:00.000000Z",
+                "updated_at": "2021-01-12T04:06:00.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              },
+              {
+                "id": 616,
+                "full_name": "task test",
+                "username": "task",
+                "phone": "0770327384738",
+                "img": null,
+                "dep_id": 4,
+                "status": 0,
+                "salary": 0,
+                "manager_name": null,
+                "is_employee": 0,
+                "is_manager": false,
+                "created_at": "2021-05-26T17:19:01.000000Z",
+                "updated_at": "2021-05-26T17:19:01.000000Z",
+                "is_deleted": false,
+                "department": {
+                  "id": 4,
+                  "name": "Wireless"
+                }
+              }
+            ],
+            "work_cars": []
+          }
+        ]
+      }
+    ]
+  }
+}
+
+

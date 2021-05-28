@@ -1,0 +1,31 @@
+{
+  "request": {
+    "url": "https://mgm1.dishtele.com/api/v1/daily_work/getListMyWork?skip=0&take=5",
+  },
+  "response": {
+    "message": {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbWdtMS5kaXNodGVsZS5jb21cL2FwaVwvdjFcL3VzZXJzXC9sb2dpbiIsImlhdCI6MTYyMjIxNzY5NSwiZXhwIjoxNjIyMjQ2NDk1LCJuYmYiOjE2MjIyMTc2OTUsImp0aSI6IlJrd3NPZ3IySzRscG43WmgiLCJzdWIiOjYxNiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.su8y-zzm5BKP8QG6TOBUCU3mnaHmzqJLH9TBY5Y5wXE",
+      "userData": {
+        "id": 616,
+        "full_name": "task test",
+        "username": "task",
+        "phone": "0770327384738",
+        "img": null,
+        "dep_id": 4,
+        "status": 0,
+        "salary": 0,
+        "manager_name": null,
+        "is_employee": 0,
+        "is_manager": false,
+        "created_at": "2021-05-26T17:19:01.000000Z",
+        "updated_at": "2021-05-26T17:19:01.000000Z",
+        "is_deleted": false,
+        "department": {
+          "id": 4,
+          "name": "Wireless"
+        }
+      }
+    }
+  }
+}
+
