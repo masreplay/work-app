@@ -1,6 +1,6 @@
 # work manager 
 
-[do task some asked me todo](https://docs.google.com/document/d/1xfeJ5lXYy0FHiTT-nF5Fleg8TG94-Y-mQrVDFRk02s8/edit?fbclid=IwAR3AxOMDBqp6BPl6RTEqvNHQrdQPH8lJ2WWZZ1xEKnqNAQx1dDZ7Hajj9EY)
+[do task some asked me todo](https://docs.google.com/document/d/12Og_06X-_8LCf5Yr8TJ4MQOeV2KkjcJsj9OT_i3EOwQ/edit?usp=sharing)
 
 [apicall shape](https://github.com/masreplay/work-app/tree/master/apicall)
 
