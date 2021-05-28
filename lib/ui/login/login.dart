@@ -7,8 +7,10 @@ import 'package:work_app/data/sharedpref/constants/preferences.dart';
 import 'package:work_app/stores/form/form_store.dart';
 import 'package:work_app/stores/theme/theme_store.dart';
 import 'package:work_app/ui/splash/splash.dart';
+import 'package:work_app/utils/device/device_utils.dart';
 import 'package:work_app/utils/locale/app_localization.dart';
 import 'package:work_app/utils/routes/routes.dart';
+import 'package:work_app/widgets/logo_widget.dart';
 import 'package:work_app/widgets/progress_indicator_widget.dart';
 import 'package:work_app/widgets/textfield_widget.dart';
 
@@ -69,6 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              CustomPaint(
+
+                size: Size(DeviceUtils.getScaledWidth(context, 0.8), DeviceUtils.getScaledWidth(context, 0.8).toDouble()),
+                painter: LogoPainter(),
+              ),
               Observer(
                 builder: (context) {
                   return _store.success
@@ -89,10 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Color(0x26FFFFFF),
                       borderRadius: BorderRadius.all(Radius.circular(30))),
-                  padding: EdgeInsets.all(30),
+                  padding: EdgeInsets.all(40),
                   child: Column(
                     children: [
-
                       _buildUserIdField(),
                       SizedBox(height: 20),
                       _buildPasswordField(),
@@ -106,10 +112,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           alignment: Alignment(-1, 2)),
                       SizedBox(height: 50),
                       ButtonTextWidget(
-                        borderRadius: 25,
+                        borderRadius: 100,
                         label: 'register',
-                        padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 64),
+                        padding: EdgeInsets.zero,
                         onTap: () {
                           _store.login();
                         },

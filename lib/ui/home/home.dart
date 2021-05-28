@@ -4,11 +4,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:material_dialog/material_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:work_app/constants/colors.dart';
 import 'package:work_app/models/mywork/list_my_work.dart';
 import 'package:work_app/stores/language/language_store.dart';
 import 'package:work_app/stores/theme/theme_store.dart';
 import 'package:work_app/stores/work/work_store.dart';
 import 'package:work_app/ui/home/character_list_item.dart';
+import 'package:work_app/ui/login/search.dart';
 import 'package:work_app/utils/locale/app_localization.dart';
 import 'package:work_app/utils/routes/routes.dart';
 
@@ -16,6 +18,8 @@ class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
+
+const double _actionPadding = 6.0;
 
 class _HomeScreenState extends State<HomeScreen> {
   //stores:---------------------------------------------------------------------
@@ -27,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final PagingController<int, Work> _pagingController =
       PagingController(firstPageKey: 0);
+
+  String? _searchTerm;
 
   Future<void> _fetchPage(int pageKey) async {
     try {
@@ -70,86 +76,135 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: _buildBody(),
+      body: _buildBody,
     );
   }
 
   // app bar methods:-----------------------------------------------------------
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      title: Text(AppLocalizations.of(context).translate('home_tv_posts')),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      centerTitle: true,
+      leading: Padding(
+        padding: const EdgeInsets.all(_actionPadding),
+        child: _buildCardButton(),
+      ),
+      title: Text(AppLocalizations.of(context).translate('home_title')),
       actions: _buildActions(context),
     );
   }
 
   List<Widget> _buildActions(BuildContext context) {
     return <Widget>[
-      _buildLanguageButton(),
-      _buildThemeButton(),
-      _buildLogoutButton(),
+      Padding(
+        padding: const EdgeInsets.all(_actionPadding),
+        child: _buildLanguageButton(),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(_actionPadding),
+        child: _buildThemeButton(),
+      ),
     ];
   }
 
   Widget _buildThemeButton() {
     return Observer(
-      builder: (context) {
-        return IconButton(
-          onPressed: () {
-            _themeStore.changeBrightnessToDark(!_themeStore.darkMode);
-          },
-          icon: Icon(
-            _themeStore.darkMode ? Icons.brightness_5 : Icons.brightness_3,
-          ),
-        );
-      },
-    );
+        builder: (context) => Ink(
+            decoration: const ShapeDecoration(
+              color: AppColors.blue,
+              shape: CircleBorder(),
+            ),
+            child: IconButton(
+              color: AppColors.white,
+              splashColor: AppColors.blue,
+              onPressed: () {
+                _themeStore.changeBrightnessToDark(!_themeStore.darkMode);
+              },
+              icon: Icon(
+                _themeStore.darkMode
+                    ? Icons.brightness_5_outlined
+                    : Icons.brightness_3_outlined,
+                color: AppColors.white,
+              ),
+            )));
   }
 
-  Widget _buildLogoutButton() {
-    return IconButton(
-      onPressed: () async {
-         await _store.logout();
-        Navigator.of(context).pushReplacementNamed(Routes.login);
-
-      },
-      icon: Icon(
-        Icons.power_settings_new,
+  Widget _buildLogoutButton() => Ink(
+      decoration: const ShapeDecoration(
+        color: AppColors.blue,
+        shape: CircleBorder(),
       ),
-    );
-  }
+      child: IconButton(
+        color: AppColors.white,
+        onPressed: () async {
+          await _store.logout();
+          Navigator.of(context).pushReplacementNamed(Routes.login);
+        },
+        icon: Icon(
+          Icons.logout,
+        ),
+      ));
 
-  Widget _buildLanguageButton() {
-    return IconButton(
-      onPressed: () {
-        _buildLanguageDialog();
-      },
-      icon: Icon(
-        Icons.language,
+  Widget _buildLanguageButton() => Ink(
+      decoration: const ShapeDecoration(
+        color: AppColors.blue,
+        shape: CircleBorder(),
       ),
-    );
-  }
+      child: IconButton(
+        color: AppColors.white,
+        onPressed: () {
+          _buildLanguageDialog();
+        },
+        icon: Icon(
+          Icons.language,
+        ),
+      ));
+
+  Widget _buildCardButton() => Ink(
+      decoration: const ShapeDecoration(
+        color: AppColors.blue,
+        shape: CircleBorder(),
+      ),
+      child: IconButton(
+        color: AppColors.white,
+        onPressed: () {},
+        icon: Icon(
+          Icons.shopping_cart_outlined,
+        ),
+      ));
 
   // body methods:--------------------------------------------------------------
-  Widget _buildBody() {
-    return Stack(
-      children: <Widget>[
-        _handleErrorMessage(),
-        _buildMainPaging,
-      ],
-    );
+  Widget get _buildBody => Stack(
+        children: <Widget>[
+          _handleErrorMessage(),
+          _buildMainPaging,
+        ],
+      );
+
+  void _updateSearchTerm(String searchTerm) {
+    _searchTerm = searchTerm;
+    _pagingController.refresh();
   }
 
   Widget get _buildMainPaging => RefreshIndicator(
         onRefresh: () => Future.sync(
           () => _pagingController.refresh(),
         ),
-        child: PagedListView<int, Work>(
-          pagingController: _pagingController,
-          builderDelegate: PagedChildBuilderDelegate<Work>(
-            itemBuilder: (context, item, index) => WorkListItem(
-              work: item,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            WorkSearchInputSliver(
+              onChanged: _updateSearchTerm,
             ),
-          ),
+            PagedSliverList<int, Work>(
+              pagingController: _pagingController,
+              builderDelegate: PagedChildBuilderDelegate<Work>(
+                itemBuilder: (context, item, index) => WorkListItem(
+                  work: item,
+                ),
+              ),
+            )
+          ],
         ),
       );
 
@@ -188,12 +243,8 @@ _buildLanguageDialog() {
       enableFullWidth: true,
       title: Text(
         AppLocalizations.of(context).translate('home_tv_choose_language'),
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-        ),
       ),
-      headerColor: Theme.of(context).primaryColor,
+      headerColor: AppColors.blue,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       closeButtonColor: Colors.white,
       enableCloseButton: true,
@@ -205,17 +256,22 @@ _buildLanguageDialog() {
           .map(
             (object) => ListTile(
               dense: true,
-              contentPadding: EdgeInsets.all(0.0),
-              title: Text(
-                object.language!,
-                style: TextStyle(
-                  color: _languageStore.locale == object.locale
-                      ? Theme.of(context).primaryColor
-                      : _themeStore.darkMode ? Colors.white : Colors.black,
+              contentPadding: EdgeInsets.zero,
+              selectedTileColor: AppColors.blue.withOpacity(0.5),
+              selected:  _languageStore.locale == object.locale,
+              title: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  object.language!,
+                  style: TextStyle(
+                    color: _languageStore.locale == object.locale
+                        ? _themeStore.darkMode ? Colors.white : Colors.black
+                        : _themeStore.darkMode ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pop();
+                 Navigator.of(context).pop();
                 // change user language based on selected locale
                 _languageStore.changeLanguage(object.locale!);
               },

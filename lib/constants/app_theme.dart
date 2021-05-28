@@ -26,20 +26,24 @@ import 'package:work_app/constants/font_family.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData themeData = new ThemeData(
-    fontFamily: FontFamily.productSans,
+    fontFamily: FontFamily.jannat,
     brightness: Brightness.light,
-    primarySwatch: AppColors.orange,
-    primaryColor: AppColors.orange[500],
+    primarySwatch: AppColors.white,
+    primaryColor: AppColors.white,
+    splashColor: AppColors.blue,
+    iconTheme: IconThemeData(color: Colors.red),
     primaryColorBrightness: Brightness.light,
-    accentColor: AppColors.orange[500],
+    accentColor: AppColors.white,
     accentColorBrightness: Brightness.light
 );
 
 final ThemeData themeDataDark = ThemeData(
-  fontFamily: FontFamily.productSans,
+  fontFamily: FontFamily.jannat,
   brightness: Brightness.dark,
-  primaryColor: AppColors.orange.shade400,
+  splashColor: AppColors.blue,
+  iconTheme: IconThemeData(color: Colors.white),
+  primaryColor: AppColors.white,
   primaryColorBrightness: Brightness.dark,
-  accentColor: AppColors.orange[500],
+  accentColor: AppColors.white,
   accentColorBrightness: Brightness.dark,
 );

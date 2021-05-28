@@ -21,5 +21,28 @@ class AppColors {
       900: Color(0xFFB71C1C),
     },
   );
+
+  static const MaterialColor white = MaterialColor(
+    _whitePrimaryValue,
+    <int, Color>{
+      50: Color(0xFFFFFFFF),
+      100: Color(0xFFFFFFFF),
+      200: Color(0xFFFFFFFF),
+      300: Color(0xFFFFFFFF),
+      400: Color(_whitePrimaryValue),
+      500: Color(0xFFFFFFFF),
+      600: Color(0xFFFFFFFF),
+      700: Color(0xFFFFFFFF),
+      800: Color(0xFFFFFFFF),
+      900: Color(0xFFFFFFFF),
+    },
+  );
   static const int _orangePrimaryValue = 0xFFF44336;
+  static const int _whitePrimaryValue = 0xFFFFFFFF;
+
+
+  static const Color blue = Color(0XFF008DFE);
+
+
+
 }

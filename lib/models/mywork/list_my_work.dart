@@ -40,9 +40,9 @@ class Item {
   @JsonKey(name: 'is_manager')
   final bool isManager;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @JsonKey(name: 'works')
@@ -94,7 +94,7 @@ class Work {
   @JsonKey(name: 'status')
   final int status;
   @JsonKey(name: 'created_date')
-  final String createdDate;
+  final DateTime createdDate;
   @JsonKey(name: 'pivot')
   final Pivot pivot;
   @JsonKey(name: 'repeaters')
@@ -154,9 +154,9 @@ class Repeaters {
   @JsonKey(name: 'log')
   final String log;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
 
   Repeaters({
     required this.id,
@@ -199,9 +199,9 @@ class Users {
   @JsonKey(name: 'is_manager')
   final bool isManager;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @JsonKey(name: 'agent')
@@ -272,9 +272,9 @@ class Agent {
   @JsonKey(name: 'to_company')
   final String? toCompany;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @JsonKey(name: 'repeaters')
@@ -349,9 +349,9 @@ class Employee {
   @JsonKey(name: 'is_manager')
   final bool isManager;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @JsonKey(name: 'department')

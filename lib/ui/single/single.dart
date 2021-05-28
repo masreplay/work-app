@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:work_app/constants/strings.dart';
 
 class SingleScreen extends StatefulWidget {
   @override
@@ -12,9 +13,11 @@ class _SingleScreenState extends State<SingleScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: Text("asdasdasd"),
-      ),
-      body: Container(child: Text("asd")));
+  Widget build(BuildContext context) {
+    var item = ModalRoute.of(context)?.settings.arguments as String;
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(item),
+        ),);
+  }
 }
