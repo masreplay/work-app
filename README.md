@@ -1,8 +1,8 @@
 # work manager 
 
-##[do task some asked me todo](https://docs.google.com/document/d/1xfeJ5lXYy0FHiTT-nF5Fleg8TG94-Y-mQrVDFRk02s8/edit?fbclid=IwAR3AxOMDBqp6BPl6RTEqvNHQrdQPH8lJ2WWZZ1xEKnqNAQx1dDZ7Hajj9EY)
+[do task some asked me todo](https://docs.google.com/document/d/1xfeJ5lXYy0FHiTT-nF5Fleg8TG94-Y-mQrVDFRk02s8/edit?fbclid=IwAR3AxOMDBqp6BPl6RTEqvNHQrdQPH8lJ2WWZZ1xEKnqNAQx1dDZ7Hajj9EY)
 
-#[apicall shape](https://github.com/masreplay/work-app/tree/master/apicall)
+[apicall shape](https://github.com/masreplay/work-app/tree/master/apicall)
 
 Go to project root and execute the following command:
 
